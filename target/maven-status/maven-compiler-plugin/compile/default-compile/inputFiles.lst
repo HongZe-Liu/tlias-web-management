@@ -1,7 +1,14 @@
 /Users/liuhongze/IdeaProjects/tlias-web-management/src/main/java/com/itheima/TliasWebManagementApplication.java
 /Users/liuhongze/IdeaProjects/tlias-web-management/src/main/java/com/itheima/controller/DeptController.java
+/Users/liuhongze/IdeaProjects/tlias-web-management/src/main/java/com/itheima/controller/EmpController.java
 /Users/liuhongze/IdeaProjects/tlias-web-management/src/main/java/com/itheima/mapper/DeptMapper.java
+/Users/liuhongze/IdeaProjects/tlias-web-management/src/main/java/com/itheima/mapper/EmpMapper.java
 /Users/liuhongze/IdeaProjects/tlias-web-management/src/main/java/com/itheima/pojo/Dept.java
+/Users/liuhongze/IdeaProjects/tlias-web-management/src/main/java/com/itheima/pojo/Emp.java
+/Users/liuhongze/IdeaProjects/tlias-web-management/src/main/java/com/itheima/pojo/EmpExpr.java
+/Users/liuhongze/IdeaProjects/tlias-web-management/src/main/java/com/itheima/pojo/PageResult.java
 /Users/liuhongze/IdeaProjects/tlias-web-management/src/main/java/com/itheima/pojo/Result.java
 /Users/liuhongze/IdeaProjects/tlias-web-management/src/main/java/com/itheima/service/DeptService.java
+/Users/liuhongze/IdeaProjects/tlias-web-management/src/main/java/com/itheima/service/EmpService.java
 /Users/liuhongze/IdeaProjects/tlias-web-management/src/main/java/com/itheima/service/Impl/DeptServiceImpl.java
+/Users/liuhongze/IdeaProjects/tlias-web-management/src/main/java/com/itheima/service/Impl/EmpServiceImpl.java
