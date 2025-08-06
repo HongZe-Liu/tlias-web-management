@@ -7,7 +7,6 @@ import java.io.Serializable;
  * 后端统一返回结果
  */
 
-@Data
 public class Result {
 
     private Integer code; //编码：1成功，0为失败
@@ -36,4 +35,27 @@ public class Result {
         return result;
     }
 
+    public Object getData() {
+        return data;
+    }
+
+    public void setData(Object data) {
+        this.data = data;
+    }
+
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
+
+    public Integer getCode() {
+        return code;
+    }
+
+    public void setCode(Integer code) {
+        this.code = code;
+    }
 }

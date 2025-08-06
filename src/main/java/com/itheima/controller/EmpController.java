@@ -1,6 +1,7 @@
 package com.itheima.controller;
 
 import com.itheima.pojo.Emp;
+import com.itheima.pojo.EmpQueryParam;
 import com.itheima.pojo.PageResult;
 import com.itheima.pojo.Result;
 import com.itheima.service.EmpService;
@@ -29,27 +30,17 @@ public class EmpController {
 
     /**
      * 员工分页查询接口
-     * @param page 页码，从1开始
-     * @param pageSize 每页显示的记录数
-     * @return 包含分页数据的统一响应结果
      */
     @GetMapping
     // 使用 @RequestParam 添加默认值，如果前端没有传递值则直接使用默认值
-    public Result page(@RequestParam(defaultValue = "1") Integer page,
-                       @RequestParam(defaultValue = "10") Integer pageSize) {
+    public Result page(EmpQueryParam empQueryParam) {
         // 记录日志：打印分页查询的参数信息，用于调试和监控
-        log.info("分页查询：{},{}",page,pageSize);
+        log.info("分页查询：{},{}", empQueryParam);
 
-        // 调用业务层服务：
-        // 1. empService是员工服务类的实例
-        // 2. 调用page方法进行分页查询
-        // 3. 返回PageResult对象，包含员工列表和分页信息（总数、当前页等）
-        PageResult<Emp> pageResult = empService.page(page,pageSize);
+        // 调用业务层服务：实现分页查询
+        PageResult<Emp> pageResult = empService.page(empQueryParam);
 
         // 封装响应结果：
-        // 1. Result.success()创建成功响应
-        // 2. 将分页结果作为data返回给前端
-        // 3. 通常包含code、message、data等字段
         return Result.success(pageResult);
     }
 
