@@ -4,6 +4,7 @@ import lombok.Data;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class Emp {
     private Integer id; //ID,主键
@@ -20,8 +21,11 @@ public class Emp {
     private LocalDateTime createTime; //创建时间
     private LocalDateTime updateTime; //修改时间
 
-    //封装部门名称数
+    //封装部门名称
     private String deptName; //部门名称
+
+    //封装工作信息经历
+    private List<EmpExpr> empList;
 
     public Integer getId() {
         return id;
@@ -134,4 +138,13 @@ public class Emp {
     public void setDeptName(String deptName) {
         this.deptName = deptName;
     }
+
+    public List<EmpExpr> getEmpList() {
+        return empList;
+    }
+
+    public void setEmpList(List<EmpExpr> empList) {
+        this.empList = empList;
+    }
 }
+

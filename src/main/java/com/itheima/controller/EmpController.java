@@ -9,10 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * 员工管理
@@ -42,6 +39,16 @@ public class EmpController {
 
         // 封装响应结果：
         return Result.success(pageResult);
+    }
+
+    /**
+     * 新增员工
+     */
+    @PostMapping("")
+    public Result save(@RequestBody  Emp emp) {
+    log.info("新增员工:{}", emp);
+    empService.save(emp);
+    return Result.success();
     }
 
 }

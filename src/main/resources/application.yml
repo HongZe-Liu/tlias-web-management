@@ -14,3 +14,8 @@ mybatis:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
     #开启驼峰命名映射开关
     map-underscore-to-camel-case: true
+
+#pagehelper 分页合理化-> 自动修复不合理的分页参数
+pagehelper:
+  reasonable: true
+  helper-dialect: mysql
