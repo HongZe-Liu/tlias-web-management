@@ -7,6 +7,12 @@ spring:
     url: jdbc:mysql://localhost:3306/tlias
     username: root
     password: 199585
+  servlet:
+    multipart:
+      #最大单个文件大小
+      max-file-size: 10MB
+      #最大请求文件大小
+      max-request-size: 100MB
 
 #mybatis 相关配置
 mybatis:
@@ -24,3 +30,10 @@ pagehelper:
 logging:
   level:
     org.springframework.jdbc.support.JdbcTransactionManager: debug
+
+# 阿里云oss
+aliyun:
+  oss:
+    endpoint: https://oss-eu-central-1.aliyuncs.com
+    bucketName: java-ai-course  # 注意：这里是bucketName，不是bucketname
+    region: eu-central-1

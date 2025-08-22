@@ -5,16 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f61118fb-7b77-4858-9a60-10e61d60100e" name="更改" comment="build project structure">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/itheima/controller/UploadController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/itheima/mapper/EmpLogMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/itheima/pojo/EmpLog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/itheima/service/EmpLogService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/itheima/service/Impl/EmpLogServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/upload.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/fd0f0513-4158-4ad0-85d7-4f75f23dbc70.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/fd0f0513-4158-4ad0-85d7-4f75f23dbc70.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/itheima/controller/DatabaseTestController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/itheima/utils/AliyunOSSOperator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/itheima/utils/AliyunOSSproperties.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/itheima/service/Impl/EmpServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/itheima/service/Impl/EmpServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/itheima/TliasWebManagementApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/itheima/TliasWebManagementApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/itheima/controller/UploadController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/itheima/controller/UploadController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.yml" afterDir="false" />
     </list>
@@ -46,6 +45,9 @@
     &quot;accountId&quot;: &quot;b88d6d05-46c9-45fa-bb17-1a7f86b92ce5&quot;
   }
 }</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/itheima/utils/AliyunOSSOperator.java" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -78,6 +80,7 @@
     &quot;Spring Boot.TliasWebManagementApplication.executor&quot;: &quot;Run&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/liuhongze/IdeaProjects/tlias-web-management/src/main/java/com/itheima/utils&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -96,6 +99,9 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/com/itheima/utils" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources/static" />
       <recent name="$PROJECT_DIR$/src/main/resources" />
@@ -126,7 +132,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1753293096527</updated>
-      <workItem from="1753293097653" duration="65157000" />
+      <workItem from="1753293097653" duration="73583000" />
+      <workItem from="1755708973159" duration="7947000" />
     </task>
     <task id="LOCAL-00001" summary="初始化项目 - 添加部门管理功能&#10;&#10;- 创建部门实体类Dept&#10;- 添加部门控制器DeptController  &#10;- 添加部门服务层DeptService&#10;- 配置MyBatis和数据库连接">
       <option name="closed" value="true" />
