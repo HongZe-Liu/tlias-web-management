@@ -6,10 +6,14 @@ import com.itheima.pojo.PageResult;
 import com.itheima.pojo.Result;
 import com.itheima.service.EmpService;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.ibatis.annotations.Delete;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * 员工管理
@@ -49,6 +53,27 @@ public class EmpController {
     log.info("新增员工:{}", emp);
     empService.save(emp);
     return Result.success();
+    }
+
+    /***
+     * 员工信息删除
+     */
+    @DeleteMapping("")
+    public Result delete(@RequestParam List<Integer> ids) {
+        log.info("要删除员工的id为：{}", ids);
+        empService.delete(ids);
+        return Result.success();
+    }
+
+    /**
+     * 根据id查询员工信息
+     */
+    @GetMapping("/{id}")
+    //@PathVariable 从路径中提取数值并绑定给对象
+    public Result getInfor(@PathVariable Integer id) {
+        log.info("需要查询员工的id是:{}" , id );
+        Emp emp = empService.getInfo(id);
+        return Result.success(emp);
     }
 
 }
