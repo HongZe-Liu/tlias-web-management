@@ -3,12 +3,11 @@ package com.itheima.mapper;
 import com.itheima.pojo.Emp;
 import com.itheima.pojo.EmpQueryParam;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Options;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
+import java.util.Map;
+
 @Mapper
 public interface EmpMapper {
 
@@ -44,4 +43,22 @@ public interface EmpMapper {
      * 根据id查询员工信息及员工工作经历
      */
     Emp getById(Integer id);
+
+    /**
+     * 根据id更新员工基本信息
+     */
+
+    void updateById(Emp emp);
+
+    /**
+     * 统计员工职位
+     **/
+    @MapKey("pos")
+    List<Map<String,Object>> countEmpJobData();
+
+    /**
+     * 统计员工性别
+     **/
+    @MapKey("name")
+    List<Map<String, Object>> countEmpGenderData();
 }
