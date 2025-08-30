@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itheima.mapper.ClazzMapper">
+
+    <!-- 定义结果映射 -->
+    <resultMap id="ClazzResultMap" type="com.itheima.pojo.Clazz">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="room" column="room"/>
+        <result property="beginDate" column="begin_date"/>
+        <result property="endDate" column="end_date"/>
+        <result property="masterId" column="master_id"/>
+        <result property="subject" column="subject"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="masterName" column="master_name"/>
+        <result property="status" column="course_status"/>
+    </resultMap>
+    <!-- 增加新班级 -->
+    <insert id="AddClass">
+            INSERT INTO clazz (
+                name,
+                room,
+                begin_date,
+                end_date,
+                master_id,
+                subject,
+                create_time,
+                update_time
+            ) VALUES (
+                         #{name},
+                         #{room},
+                         #{beginDate},
+                         #{endDate},
+                         #{masterId},
+                         #{subject},
+                         now(),
+                         now()
+                     )
+    </insert>
+    <!-- 更新班级信息-->
+    <update id="UpdateClass">
+
+        UPDATE clazz
+        <set>
+            <if test="name != null and name != ''">
+                name = #{name},
+            </if>
+            <if test="room != null and room != ''">
+                room = #{room},
+            </if>
+            <if test="beginDate != null">
+                begin_date = #{beginDate},
+            </if>
+            <if test="endDate != null">
+                end_date = #{endDate},
+            </if>
+            <if test="masterId != null">
+                master_id = #{masterId},
+            </if>
+            <if test="subject != null">
+                subject = #{subject},
+            </if>
+            update_time = NOW()
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <!-- 根据id 删除班级-->
+    <delete id="DeleteClass">
+            DELETE FROM clazz WHERE id = #{id}
+    </delete>
+
+    <select id="getClass" resultMap="ClazzResultMap">
+        SELECT
+            c.id,
+            c.name,
+            c.room,
+            c.begin_date,
+            c.end_date,
+            c.master_id,
+            c.subject,
+            c.create_time,
+            c.update_time,
+            e.name as master_name,
+            CASE
+                WHEN CURDATE() &lt; c.begin_date THEN '未开课'
+                WHEN CURDATE() &gt; c.end_date THEN '已结课'
+                ELSE '在读中'
+                END AS course_status
+        FROM
+            clazz c
+                LEFT JOIN emp e ON c.master_id = e.id
+        ORDER BY
+            c.begin_date
+    </select>
+
+    <!-- 根据id 查询班级-->
+    <select id="ReqClass" resultType="com.itheima.pojo.Clazz">
+        select * from clazz where id = #{id};
+    </select>
+    <!-- 查询全部班级列表-->
+    <select id="FindAllClass" resultType="com.itheima.pojo.Clazz">
+        SELECT
+            id,
+            name,
+            room,
+            begin_date AS beginDate,
+            end_date AS endDate,
+            master_id AS masterId,
+            subject,
+            create_time AS createTime,
+            update_time AS updateTime
+        FROM clazz
+        ORDER BY id DESC;
+    </select>
+
+</mapper>
