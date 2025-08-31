@@ -4,6 +4,7 @@ import com.itheima.pojo.Emp;
 import com.itheima.pojo.JobOption;
 import com.itheima.pojo.Result;
 import com.itheima.service.ReportService;
+import com.itheima.service.StudentService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,9 @@ public class ReportController {
 
     @Autowired
     private ReportService reportService;
+    @Autowired
+    private StudentService studentService;
+
     /**
      * 统计员工职位
      */
@@ -42,5 +46,23 @@ public class ReportController {
         return Result.success(genderList);
     }
 
+    /**
+     * 学员学历统计
+     */
+    @GetMapping("/studentDegreeData")
+    public Result getDegreeData(){
+        log.info("学员学历统计");
+        List<Map<String,Object>> degreeList = reportService.getStudentDegree();
+        return Result.success(degreeList);
+    }
 
+    /**
+     * 班级人数统计
+     */
+    @GetMapping("studentCountData")
+    public Result getClassCountData(){
+        log.info("统计班级人数");
+        List<Map<String,Object>> classCountDataList = reportService.getClassCountData();
+        return Result.success(classCountDataList);
+    }
 }

@@ -5,9 +5,37 @@
 <mapper namespace="com.itheima.mapper.StudentMapper">
     <!--添加学生信息-->
     <insert id="AddStudent">
-        INSERT INTO Student (name, no, gender, phone, degree, clazz_id, id_card, is_college, address, graduation_date)
+        INSERT INTO student (name, no, gender, phone, degree, clazz_id, id_card, is_college, address, graduation_date)
         VALUES (#{name},#{no},#{gender},#{phone},#{degree},#{clazzId},#{idCard},#{isCollege},#{address},#{graduationDate});
     </insert>
+    <!--更新学生信息-->
+    <update id="UpdateStudent">
+        UPDATE student
+        <set>
+            <if test="name != null and name != ''">name = #{name},</if>
+            <if test="no != null and no != ''">no = #{no},</if>
+            <if test="phone != null and phone != ''">phone = #{phone},</if>
+            <if test="gender != null">gender = #{gender},</if>
+            <if test="degree != null">degree = #{degree},</if>
+            <if test="idCard != null and idCard != ''">id_card = #{idCard},</if>
+            <if test="isCollege != null">is_college = #{isCollege},</if>
+            <if test="address != null and address != ''">address = #{address},</if>
+            <if test="graduationDate != null">graduation_date = #{graduationDate},</if>
+            <if test="violationCount != null">violation_count = #{violationCount},</if>
+            <if test="violationScore != null">violation_score = #{violationScore},</if>
+            <if test="clazzId != null">clazz_id = #{clazzId},</if>
+            update_time = NOW()
+        </set>
+        WHERE id = #{id}
+    </update>
+    <!--更新学生违纪信息-->
+    <update id="violationScore">
+        UPDATE student
+        SET violation_count = violation_count + 1,
+        violation_score = violation_score + #{violationScore}  <!-- 使用驼峰 -->
+        WHERE id = #{id}
+    </update>
+
     <!--批量删除学生信息-->
     <delete id="DeleteStudentById">
         DELETE  from student where id in
@@ -40,4 +68,38 @@
                  LEFT JOIN clazz c ON s.clazz_id = c.id
         ORDER BY s.create_time DESC
     </select>
+
+    <!--查询学生学历情况-->
+    <select id="countStudentDegree" resultType="java.util.Map">
+        select
+            case
+                when degree = 1 then '初中'
+                when degree = 2 then '高中'
+                when degree = 3 then '大专'
+                when degree = 4 then '本科'
+                when degree = 5 then '硕士'
+                else '其他'
+                end as name,
+            count(*) as value
+        from student
+        group by degree
+    </select>
+    <!--查询班级人数-->
+    <select id="getClassCount" resultType="java.util.Map">
+        select
+            case
+                when clazz_id = 1 then 'JavaEE就业163期'
+                when clazz_id = 2 then '前端就业90期'
+                when clazz_id = 3 then 'JavaEE就业165期'
+                when clazz_id = 4 then 'JavaEE就业166期'
+                when clazz_id = 5 then '大数据就业58期'
+                when clazz_id = 6 then 'JavaEE就业167期'
+                else '其他班级'
+                end as name,
+            count(*) as value
+        from student
+        group by clazz_id
+        order by clazz_id
+    </select>
+
 </mapper>

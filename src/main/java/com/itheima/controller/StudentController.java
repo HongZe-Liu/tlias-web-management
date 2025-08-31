@@ -54,4 +54,34 @@ public class StudentController {
         studentService.AddStudent(student);
         return Result.success();
     }
+
+    /**
+     * 根据id查询学员信息
+     */
+    @GetMapping("/{id}")
+    public Result getStudentById(@PathVariable Integer id){
+        Student student = studentService.ReqStudent(id);
+        return Result.success(student);
+    }
+
+    /**
+     *  修改学员信息
+     */
+    @PutMapping()
+    public Result UpdateStudent(@RequestBody Student student){
+        log.info("修改学员信息{}",student);
+        studentService.UpDateStudent(student);
+        return Result.success();
+    }
+
+    /**
+     *  违纪信息处理
+     */
+    @PutMapping("/violation/{id}/{score}")
+    public Result updateViolationScore(@PathVariable("id") Integer id ,@PathVariable("score") Integer score){
+        log.info("根据id扣除违纪分数{},{}",id,score);
+        studentService.ViolationScore(id,score);
+        return Result.success();
+    }
+
 }

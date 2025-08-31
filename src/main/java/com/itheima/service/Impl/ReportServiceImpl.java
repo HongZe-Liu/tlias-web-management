@@ -1,6 +1,7 @@
 package com.itheima.service.Impl;
 
 import com.itheima.mapper.EmpMapper;
+import com.itheima.mapper.StudentMapper;
 import com.itheima.pojo.JobOption;
 import com.itheima.service.ReportService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,8 @@ import java.util.Map;
 public class ReportServiceImpl implements ReportService {
     @Autowired
     private EmpMapper empMapper;
+    @Autowired
+    private StudentMapper studentMapper;
 
     @Override
     public JobOption getEmpJobData() {
@@ -29,5 +32,14 @@ public class ReportServiceImpl implements ReportService {
     @Override
     public List<Map<String, Object>> getEmpGenderData() {
         return empMapper.countEmpGenderData();
+    }
+
+    @Override
+    public List<Map<String, Object>> getStudentDegree() {return studentMapper.countStudentDegree() ;
+    }
+
+    @Override
+    public List<Map<String, Object>> getClassCountData() {
+        return studentMapper.getClassCount();
     }
 }

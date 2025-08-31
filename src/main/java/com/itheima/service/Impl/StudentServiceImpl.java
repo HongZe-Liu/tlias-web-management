@@ -10,6 +10,7 @@ import com.itheima.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -53,5 +54,32 @@ public class StudentServiceImpl implements StudentService {
     public void AddStudent(Student student) {
         studentMapper.AddStudent(student);
     }
+
+    /**
+     * 通过id查询学员信息
+     */
+    @Override
+    public Student ReqStudent(Integer id) {
+        return studentMapper.ReqStudent(id);
+    }
+
+
+    /**
+     * 更新学生信息
+     */
+    @Override
+    public void UpDateStudent(Student student) {
+        student.setUpdateTime(LocalDateTime.now());
+        studentMapper.UpdateStudent(student);
+    }
+
+    /**
+     * 更新违纪信息
+     */
+    @Override
+    public void ViolationScore(Integer id, Integer score) {
+        studentMapper.violationScore(id,score);
+    }
+
 
 }

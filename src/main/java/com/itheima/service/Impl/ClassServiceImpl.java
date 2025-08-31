@@ -61,6 +61,7 @@ public class ClassServiceImpl implements ClassService {
 
     @Override
     public Clazz ReqClass(Long id) {
+
         return clazzMapper.ReqClass(id);
     }
 
@@ -68,7 +69,7 @@ public class ClassServiceImpl implements ClassService {
     public void UpdateClass(Clazz clazz) {
         // 补全基础信息
         clazz.setUpdateTime(LocalDateTime.now());
-        // 调用Mapper接口方法更新部门
+        // 调用Mapper接口方法更新班级
         clazzMapper.UpdateClass(clazz);
     }
 
