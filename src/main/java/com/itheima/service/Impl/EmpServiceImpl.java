@@ -2,12 +2,17 @@ package com.itheima.service.Impl;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.itheima.controller.ClassController;
 import com.itheima.mapper.EmpExprMapper;
 import com.itheima.mapper.EmpLogMapper;
 import com.itheima.mapper.EmpMapper;
 import com.itheima.pojo.*;
 import com.itheima.service.EmpLogService;
 import com.itheima.service.EmpService;
+import com.itheima.utils.JwtUtils;
+import io.jsonwebtoken.Jwts;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,7 +20,9 @@ import org.springframework.util.CollectionUtils;
 
 import java.time.LocalDateTime;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 员工管理
@@ -23,6 +30,7 @@ import java.util.List;
  */
 @Service
 public class EmpServiceImpl implements EmpService {
+    private static final Logger log = LoggerFactory.getLogger(ClassController.class);
 
     @Autowired
     private EmpMapper empMapper;
@@ -124,6 +132,28 @@ public class EmpServiceImpl implements EmpService {
             // 批量插入所有工作经历到数据库
             empExprMapper.insetBatch(exprList);
         }
+    }
+
+    /**
+     * 登录
+     */
+    @Override
+    public LoginInfo login(Emp emp) {
+        // 调用mapper接口，根据用户名/密码查询员工信息
+        Emp e = empMapper.selectByUsernameAndPassword(emp);
+
+        // 判断是否存在这个员工，如果存在则组装成功登录的信息，不存在则直接返回null
+
+        if(e != null) {
+            log.info("登录成功，员工信息{}",e);
+            // 生成jwt
+            Map<String,Object> claims = new HashMap<>(); // 生成一个map用于存储自定义信息
+            claims.put("username",e.getUsername()); // 将用户名放入map
+            claims.put("password",e.getPassword()); // 将密码放入map
+            String jwt = JwtUtils.generateJwt(claims); // 调用工具类创建jwt
+            return new LoginInfo(e.getId(),e.getUsername(),e.getName(),jwt);
+        }
+        return null;
     }
 
 }
