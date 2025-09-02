@@ -14,7 +14,7 @@ import java.io.IOException;
 /**
  * 校验Filter
  */
-@WebFilter(urlPatterns = "/*")
+// @WebFilter(urlPatterns = "/*")
 public class TokenFilter implements Filter {
     private static final Logger log = LoggerFactory.getLogger(ClassController.class);
 
